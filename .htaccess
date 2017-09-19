@@ -10,7 +10,7 @@
         Header set Cache-Control "max-age=604800"
     </FilesMatch>
     # Все флэш файлы и изображения будут храниться в кэше браузера один месяц
-    <FilesMatch "\.(flv|swf|ico|gif|jpg|jpeg|png)$">
+    <FilesMatch "\.(gif|jpg|jpeg|png)$">
         Header set Cache-Control "max-age=2592000"
     </FilesMatch>
     # Отключаем кеширование php и других служебных файлов
@@ -18,4 +18,7 @@
         Header unset Cache-Control
     </FilesMatch>
 </IfModule>
-# END WordPress
+
+<ifModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+</ifModule>
